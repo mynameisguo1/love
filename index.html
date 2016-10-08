@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>心形团试验</title>
+		<style type="text/css">
+			body{
+				background: #ffe;
+			}
+			div{
+				position: absolute;
+			}
+			#div1{
+				margin-left: 50%;
+				margin-top: 30px;
+				width: 500px;
+				height: 500px;
+			}
+			#div1 .div2{
+				width: 20px;
+				height: 20px;
+				overflow: hidden;
+				background:url(img/12111.jpg) no-repeat;
+				background-size: 40px;
+				border-radius: 50%;
+				transition: all 3s;
+			}
+			#timer{
+				width: 500px;
+				left: 20px;
+				top: 150px;
+				color: #666;
+			}
+			#timer1{
+				font-size: 25px;
+			}
+			#timer2{
+				margin-left: 35px;
+				font-size: 20px;
+			}
+			#timer3{
+				font-size: 23px;
+				margin-left: 95px;
+				margin-top: 100px;
+			}
+			#timer4{
+				font-size: 23px;
+				font-style: italic;
+				margin-left: 225px;
+				margin-top: -15px;
+			}
+			#div3{
+				left: 120px;
+				top: 130px;
+				width: 300px;
+				height: 500px;
+				color: brown;
+				font-size: 15px;
+			}
+			#div4{
+				display: none;
+			}
+			span{
+				font-size: 25px;
+			}
+			@keyframes love{
+				from{opacity: 0;}
+				to{opacity: 1;}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1" class="div1">
+			<div id="timer">
+				<p id="timer1"></p>
+				<p id="timer2"></p>
+				<p id="timer3"></p>
+				<p id="timer4"></p>
+			</div>
+		</div>	
+		<div id="div4">
+			/**<br>
+			 * 2012-06-09,<br>
+			 * 2016-10-08.<br>
+			*/<br>
+			Here's a little story<br>
+			Boy name = Mr LI<br>
+			Girl name = Mrs ZHANG<br>
+			// Fall in love river. <br>
+			The boy love the girl;<br>
+			// They love each other.<br>
+			The girl loved the boy;<br>
+			// AS time goes on.<br>
+			The boy can not be separated the girl;<br>
+			// At the same time.<br>
+			The girl can not be separated the boy;<br>
+			// Both wind and snow all over the sky.<br>
+			// Whether on foot or 5 kilometers.<br>
+			The boy very happy;<br>
+			The girl is also very happy;<br>
+			// Whether it is right now<br>
+			// Still in the distant future.<br>
+			The boy has but one dream;<br>
+			// The boy wants the girl could well have been happy.<br>
+			<br>
+			<br>
+			I want to say:<br>
+			Baby, I love you forever;<br>
+		</div>
+		<div id="div3"></div>
+		<script type="text/javascript">
+		var timer1 = setInterval(function (){
+		function aa(x,y){
+			var div1 = document.getElementById('div1');
+			var div2 = document.createElement('div');
+			div2.className = 'div2';
+			div2.style.left = x + 'px';
+			div2.style.top = y + 'px';
+			div2.style.animation = 'love 3s';
+			div1.appendChild(div2);
+		}
+		function bb(r,dx,dy){
+			var m,n,x,y,i;
+			for(i = 0;i < 150; i += 0.4){
+				m = i;
+				n = -r * (((Math.cos(i) * Math.sqrt(Math.abs(Math.sin(i)))) / (Math.cos(i) + 1.6)) - 2 * Math.cos(i) + 2 );
+				x = n * Math.sin(i) + dx;
+				y = n * Math.cos(i) + dy;
+				aa(x,y);
+			}
+			if(i>150){
+				clearInterval(timer1);
+			}
+		}
+		bb(120,230,100);},1000)
+		//距离到现在的时间
+		var interval = 1500; 
+		function ShowCountDown(year,month,day) { 
+			var now = new Date(); 
+			var endDate = new Date(year, month-1, day); 
+			var leftTime=now.getTime()-endDate.getTime(); 
+			var leftsecond = parseInt(leftTime/1000); 
+			//var day1=parseInt(leftsecond/(24*60*60*6)); 
+			var day1=Math.floor(leftsecond/(60*60*24)); 
+			var hour=dd(Math.floor((leftsecond-day1*24*60*60)/3600)); 
+			var minute=dd(Math.floor((leftsecond-day1*24*60*60-hour*3600)/60)); 
+			var second=dd(Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60)); 
+			function dd(n){
+				if(n < 10){
+					return '0'+n;
+				}else{
+					return ''+n;
+				}
+			}
+			var cc = document.getElementById('timer');
+			cc.style.animation = 'love 3s';
+			var aa = cc.getElementsByTagName('p')[0];
+			var bb = cc.getElementsByTagName('p')[1];
+			aa.innerHTML = "距离" + year+"年"+month+"月"+day+"日过去了：";
+			bb.innerHTML = "<span>"+ day1 + "</span>" +" days "+ "<span>"+ hour + "</span>" +" hours "+ "<span>" + minute + "</span>"+" minutes "+ "<span>" +second+ "</span>" + " seconds";
+		}
+		setInterval(function(){ShowCountDown(2012,6,9);}, interval);
+		setInterval(function(){
+			var say = document.getElementById('timer3');
+			say.style.animation = 'love 3s';
+			var name = document.getElementById('timer4');
+			name.style.animation = 'love 3s';
+			say.innerHTML = '写的不好,随便看看吧.';
+			name.innerHTML = '- 无聊的人'
+		},3000)
+		//左边的字
+		var charIndex = -1;
+	    var stringLength = 0;
+	    var inputText;
+	    function writeContent(init){
+	        if(init){
+	        	inputText = document.getElementById('div4').innerHTML;
+	        }
+	        if(charIndex==-1){
+	            charIndex = 0;
+	            stringLength = inputText.length;
+	        }
+	        var initString = document.getElementById('div3').innerHTML;
+			initString = initString.replace(/<span.*$/gi,"");
+	        
+	        var theChar = inputText.charAt(charIndex);
+	       	var nextFourChars = inputText.substr(charIndex,4);
+	       	if(nextFourChars=='<BR>' || nextFourChars=='<br>'){
+	       		theChar  = '<BR>';
+	       		charIndex+=3;
+	       	}
+	        initString = initString + theChar + "<span id='blink'>_</span>";
+	        document.getElementById('div3').innerHTML = initString;
+	
+	        charIndex = charIndex/1 +1;
+			if(charIndex%2==1){
+	             document.getElementById('blink').style.display='none';
+	        }else{
+	             document.getElementById('blink').style.display='inline';
+	             document.getElementById('blink').style.fontSize = 15 + 'px';
+	        }
+	                
+	        if(charIndex<=stringLength){
+	            setTimeout('writeContent(false)',150);
+	        }else{
+	        	blinkSpan();
+	        } 
+	    }
+	    
+	    var currentStyle = 'inline';
+	    function blinkSpan(){
+	    	if(currentStyle=='inline'){
+	    	currentStyle='none';
+	    	}else{
+	    	currentStyle='inline';
+	    	}
+	    	document.getElementById('blink').style.display = currentStyle;
+	    	setTimeout('blinkSpan()',150);
+	    }
+	    writeContent(true);
+		</script>
+	</body>
+</html>
