@@ -57,7 +57,6 @@
 				height: 500px;
 				color:  aquamarine;
 				font-size: 15px;
-				
 			}
 			#div4{
 				display: none;
@@ -121,7 +120,8 @@
 		<div id="div5">
 			
 		</div>
-		<embed src="张杰、谢娜 - 明天过后.mp3" hidden="true" loop="true" autostart="true"></embed>
+		<audio autoplay="autoplay" src="童可可 - 爱的就是你.mp3" loop="loop">
+		</audio>
 		<script type="text/javascript">
 		//心形图案
 		var timer1 = setInterval(function (){
@@ -146,8 +146,23 @@
 			if(i>150){
 				clearInterval(timer1);
 			}
+			var div6 = document.getElementById('div6');
+			var love = div6.getElementsByTagName('div');
+			//alert(love.length);
+			for(var j = 0;j < love.length;j++){
+				love[j].style.display = 'none';
+			}
+			var g = 0;
+			var love1 = setInterval(function(){
+				g++;
+				love[g].style.display = 'block';
+				if(g > 370){
+					clearInterval(love1);
+				}
+			},80);
 		}
 		bb(120,230,100);},1000);
+
 		
 		
 		//距离到现在的时间
