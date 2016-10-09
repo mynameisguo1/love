@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,6 +25,7 @@
 				background-size: 40px;
 				border-radius: 50%;
 				transition: all 3s;
+				box-shadow: 5px 5px 10px rgba(255,255,255,.3);
 			}
 			#timer{
 				width: 500px;
@@ -67,7 +69,7 @@
 				from{opacity: 0;}
 				to{opacity: 1;}
 			}
-			.div2{
+			.div0{
 				position: absolute;
 				background: url(img/323111.png) no-repeat;
 				width: 50px;
@@ -84,6 +86,7 @@
 				<p id="timer3"></p>
 				<p id="timer4"></p>
 			</div>
+			<div id="div6"></div>
 		</div>	
 		<div id="div4">
 			/**<br>
@@ -120,14 +123,15 @@
 		</div>
 		<embed src="张杰、谢娜 - 明天过后.mp3" hidden="true" loop="true" autostart="true"></embed>
 		<script type="text/javascript">
+		//心形图案
 		var timer1 = setInterval(function (){
 		function aa(x,y){
-			var div1 = document.getElementById('div1');
+			var div1 = document.getElementById('div6');
 			var div2 = document.createElement('div');
 			div2.className = 'div2';
 			div2.style.left = x + 'px';
 			div2.style.top = y + 'px';
-			div2.style.animation = 'love 3s';
+			div2.style.animation = 'love 4s';
 			div1.appendChild(div2);
 		}
 		function bb(r,dx,dy){
@@ -143,7 +147,9 @@
 				clearInterval(timer1);
 			}
 		}
-		bb(120,230,100);},1000)
+		bb(120,230,100);},1000);
+		
+		
 		//距离到现在的时间
 		var interval = 1500; 
 		function ShowCountDown(year,month,day) { 
@@ -229,6 +235,7 @@
 	    	setTimeout('blinkSpan()',150);
 	    }
 	    writeContent(true);
+	    //满屏雪花
 	    function qq(){
 			var ee = Math.floor((Math.random() * 2 - 1)*2);
 			var rr = Math.ceil(Math.random() * 2);
@@ -239,7 +246,7 @@
 			div.style.opacity = Math.random();
 			function pp(){
 				div3.appendChild(div);
-				div.className = 'div2';
+				div.className = 'div0';
 				if(ee == 0){
 					ee = 1;
 				}
