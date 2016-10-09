@@ -5,7 +5,7 @@
 		<title>LOVE YOU</title>
 		<style type="text/css">
 			body{
-				background: #ffe;
+				background: black;
 			}
 			div{
 				position: absolute;
@@ -67,6 +67,13 @@
 				from{opacity: 0;}
 				to{opacity: 1;}
 			}
+			.div2{
+				position: absolute;
+				background: url(img/323111.png) no-repeat;
+				width: 50px;
+				height: 50px;
+				
+			}
 		</style>
 	</head>
 	<body>
@@ -108,6 +115,9 @@
 			Baby, I love you forever;<br>
 		</div>
 		<div id="div3"></div>
+		<div id="div5">
+			
+		</div>
 		<embed src="张杰、谢娜 - 明天过后.mp3" hidden="true" loop="true" autostart="true"></embed>
 		<script type="text/javascript">
 		var timer1 = setInterval(function (){
@@ -219,6 +229,37 @@
 	    	setTimeout('blinkSpan()',150);
 	    }
 	    writeContent(true);
+	    function qq(){
+			var ee = Math.floor((Math.random() * 2 - 1)*2);
+			var rr = Math.ceil(Math.random() * 2);
+			var div = document.createElement('div');
+			var div3 = document.getElementById('div5');
+			div.style.left = Math.floor(Math.random() * 1300) + 'px';
+			div.style.backgroundSize = Math.ceil(Math.random()*50) + 'px';
+			div.style.opacity = Math.random();
+			function pp(){
+				div3.appendChild(div);
+				div.className = 'div2';
+				if(ee == 0){
+					ee = 1;
+				}
+				div.style.left = div.offsetLeft + ee + 'px';
+				div.style.top = div.offsetTop + rr + 'px';
+				if(div.offsetTop > 600){
+					div.style.top = 0;
+				}
+				if(div.offsetLeft > 1300 || div.offsetLeft < 0){
+					div.style.left = Math.floor(Math.random() * 1300) + 'px';
+					div.style.top = 0;
+				}
+			}
+			setInterval(pp,30);
+			var oo = div3.getElementsByTagName('div');
+			if(oo.length > 40){
+				clearInterval(timer2);
+			}
+			}
+			var timer2 = setInterval(qq,1000);
 		</script>
 	</body>
 </html>
